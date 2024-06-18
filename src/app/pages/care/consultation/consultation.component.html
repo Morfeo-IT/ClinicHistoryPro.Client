@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="card my-3">
+        <div class="card-header">Crear Consulta</div>
+        <div class="card-body">
+            <form method="post" autocomplete="off" (ngSubmit)="onClickSave()" #form="ngForm">
+                <div class="row">
+                    <div class="col-lg-6 my-2">
+                        <label for="reasonConsultation" class="form-label">Motivo de consulta</label>
+                        <div class="form-group">
+                            <textarea class="form-control form-control-sm" rows="4" id="reasonConsultation" name="reasonConsultation" [(ngModel)]="formData['reasonConsultation']" 
+                                #reasonConsultation="ngModel" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 my-2">
+                        <label for="diagnosis" class="form-label">Diagnostico</label>
+                        <div class="form-group">
+                            <textarea class="form-control form-control-sm" rows="4" id="diagnosis" name="diagnosis" [(ngModel)]="formData['diagnosis']" 
+                                #diagnosis="ngModel" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 my-2">
+                        <label for="treatment" class="form-label">Tratamiento</label>
+                        <div class="form-group">
+                            <textarea class="form-control form-control-sm" rows="4" id="treatment" name="treatment" [(ngModel)]="formData['treatment']" 
+                                #treatment="ngModel" required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 my-2">
+                        <label for="notes" class="form-label">Notas</label>
+                        <div class="form-group">
+                            <textarea class="form-control form-control-sm" rows="4" id="notes" name="notes" [(ngModel)]="formData['notes']" 
+                                #notes="ngModel"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-lg-12 d-flex justify-content-center gap-2 text-center">
+                        <button type="submit" class="btn btn-sm btn-success">Guardar</button>
+                        <button type="button" class="btn btn-sm btn-danger" (click)="onClickCancel()">Cancelar</button>
+                    </div>
+                </div>     
+            </form>   
+        </div>
+    </div> 
+</div>

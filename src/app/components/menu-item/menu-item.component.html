@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ng-container *ngFor="let levelOne of allMenuItems">
+                    <li class="nav-item dropdown" *ngIf="haveChild(levelOne); else noDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            {{ levelOne.name }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <ng-container *ngFor="let levelTwo of levelOne.inverseParentMenuItem">
+                                <li class="nav-item dropdown" *ngIf="haveChild(levelTwo); else noLevelTwoDropdown">
+                                    <a class="dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                        {{ levelTwo.name }}
+                                    </a>
+                                    <ul class="dropdown-menu dropstart">
+                                        <ng-container *ngFor="let levelThree of levelTwo.inverseParentMenuItem">
+                                            <li *ngIf="haveChild(levelThree); else noLevelThreeDropdown" class="dropdown">
+                                                <a class="dropdown-item" [routerLink]="levelThree.url" routerLinkActive="active" role="button" data-bs-toggle="dropdown">
+                                                    {{ levelThree.name }}
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <ng-container *ngFor="let levelFour of levelThree.inverseParentMenuItem">
+                                                        <li *ngIf="haveChild(levelThree); else noLevelFourDropdown" class="dropdown">
+                                                            <a class="dropdown-item" [routerLink]="levelFour.url" routerLinkActive="active" role="button" data-bs-toggle="dropdown">
+                                                                {{ levelFour.name }}
+                                                            </a>
+                                                        </li>
+                                                        <ng-template #noLevelFourDropdown>
+                                                            <li>
+                                                                <a class="dropdown-item" [routerLink]="levelFour.url" routerLinkActive="active">
+                                                                    {{ levelFour.name }}
+                                                                </a>
+                                                            </li>
+                                                        </ng-template>
+                                                    </ng-container>
+                                                </ul>
+                                            </li>
+                                            <ng-template #noLevelThreeDropdown>
+                                                <li>
+                                                    <a class="dropdown-item" [routerLink]="levelThree.url" routerLinkActive="active">
+                                                        {{ levelThree.name }}
+                                                    </a>
+                                                </li>
+                                            </ng-template>
+                                        </ng-container>
+                                    </ul>
+                                </li>
+                                <ng-template #noLevelTwoDropdown>
+                                    <li>
+                                        <a class="dropdown-item" [routerLink]="levelTwo.url" routerLinkActive="active">
+                                            {{ levelTwo.name }}
+                                        </a>
+                                    </li>
+                                </ng-template>
+                            </ng-container>
+                        </ul>
+                    </li>
+                    <ng-template #noDropdown>
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="levelOne.url" routerLinkActive="active">
+                                {{ levelOne.name }}
+                            </a>
+                        </li>
+                    </ng-template>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</nav>

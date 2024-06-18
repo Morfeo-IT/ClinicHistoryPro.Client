@@ -1,0 +1,72 @@
+<form method="post" autocomplete="off" (ngSubmit)="onClickSave()" #form="ngForm">
+    <div class="row">
+        <div *ngFor="let field of inputs" [class]="GetColumns(field)">
+            
+            <label [for]="field.name" class="form-label" *ngIf="field.type !== 'alert'">{{ field.label }}</label>
+            
+            <div class="form-group" [ngSwitch]="field.type" >
+                
+                <div class="alert alert-info" *ngIf="field.type === 'alert'">{{ field?.valor }}</div>
+
+                <input *ngSwitchCase="'text'"
+                       [type]="field.type"
+                       class="form-control form-control-sm"
+                       [id]="field.name"
+                       [name]="field.name"
+                       [placeholder]="field.label"
+                       [(ngModel)]="formData[field.name]"
+                       #{{field.name}}="ngModel" 
+                       required/>
+
+                <select *ngSwitchCase="'select'"
+                        class="form-control form-control-sm"
+                        [id]="field.name"
+                        [name]="field.name"
+                        [(ngModel)]="formData[field.name]"
+                        #{{field.name}}="ngModel"
+                        required>
+                    <option *ngFor="let option of field.options" [value]="option">{{ option }}</option>
+                </select>
+
+                <input *ngSwitchCase="'file'"
+                       type="file"
+                       class="form-control form-control-sm"
+                       [id]="field.name"
+                       [name]="field.name"
+                       required />
+                       <!-- (change)="formData[field.name] = $event.target.files[0]" -->
+
+                <input *ngSwitchCase="'datetime-local'"
+                       type="datetime-local"
+                       class="form-control form-control-sm"
+                       [id]="field.name"
+                       [name]="field.name"
+                       [(ngModel)]="formData[field.name]"
+                       #{{field.name}}="ngModel" 
+                       required/>
+
+                <textarea *ngSwitchCase="'textarea'"
+                          class="form-control form-control-sm"
+                          [id]="field.name"
+                          [name]="field.name"
+                          [(ngModel)]="formData[field.name]"
+                          #{{field.name}}="ngModel" required></textarea>
+
+                <a *ngSwitchCase="'link'"
+                   [href]="field.url"
+                   class="btn btn-primary"
+                   download>{{ field.text }}</a>
+
+                <!-- <div *ngIf="field[name]?.invalid && (field[name]?.dirty || field[name]?.touched)" class="alert alert-danger">
+                    {{ field.label }} es requerido.
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 d-flex justify-content-center gap-2 text-center">
+            <button type="submit" class="btn btn-success" *ngIf="!!inputs">Enviar</button>
+            <button type="button" class="btn btn-danger" *ngIf="!!inputs" (click)="onClickCancel()">Cerrar</button>
+        </div>
+    </div>     
+</form>

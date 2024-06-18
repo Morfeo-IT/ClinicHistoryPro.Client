@@ -1,0 +1,36 @@
+
+
+#header {
+    background-color: #8ea9f7;
+    color: white;
+    padding: 5px;
+}
+
+#profile-information img {
+    width: 48px;
+}
+
+#profile-information a {
+    display: block;
+    font-size: 11px;
+    text-decoration: none;
+    color: white;
+}
+
+#profile-information .datetime {
+    font-size: 12px;
+}
+
+#software img {
+    height: 30px;
+    width: 150px;
+}
+
+.company img {
+    width: 238px;
+    height: 60px;
+    float: right;
+    margin-top: -5px;
+    margin-right: -12px;
+    margin-bottom: -10px;
+}

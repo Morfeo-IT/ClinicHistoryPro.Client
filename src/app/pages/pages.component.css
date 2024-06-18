@@ -1,0 +1,54 @@
+#proccess, #body i {
+    color: #818181 !important;
+}
+#proccess h4 {
+    text-align: center;
+    /* margin: 10px 0 10px 0; */
+    border-bottom: 2px solid #000;
+    padding: 7px;
+}
+
+.list-options {
+    gap: 10px;
+    /* padding: 10px; */
+    /* background-color: #f8f9fa; */
+    border-radius: 5px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.list-options span {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 3px;
+    transition: background-color 0.3s, transform 0.3s;
+    flex: 1 1 calc(33.333% - 20px); /* Tres columnas, ajustable */
+    box-sizing: border-box;
+}
+
+.list-options span:hover {
+    background-color: #e2e6ea;
+    transform: translateY(-2px);
+    color: #444;
+}
+
+.list-options i {
+    margin-right: 10px;
+    color: #007bff; /* Color del icono */
+}
+
+@media (max-width: 992px) {
+    .list-options span {
+        flex: 1 1 calc(50% - 20px); /* Dos columnas en pantallas medianas */
+    }
+}
+
+@media (max-width: 576px) {
+    .list-options span {
+        flex: 1 1 100%; /* Una columna en pantallas pequeñas */
+    }
+}

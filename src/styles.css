@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+    font-size: 11px !important;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.container-fluid {
+    margin: 0 !important;
+    /* padding: 0; */
+}
+
+.margin-bottom-15 {
+    margin-bottom: -15px;
+}
+
+.form-label {
+    margin-bottom: 0 !important;
+}
